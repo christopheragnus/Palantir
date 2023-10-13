@@ -1,4 +1,0 @@
-#!/home/christopherlam/Palantir/.venv/bin/python
-# EASY-INSTALL-SCRIPT: 'igraph==0.10.8','igraph'
-__requires__ = 'igraph==0.10.8'
-__import__('pkg_resources').run_script('igraph==0.10.8', 'igraph')
