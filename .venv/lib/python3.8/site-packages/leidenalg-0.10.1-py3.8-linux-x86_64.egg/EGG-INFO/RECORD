@@ -1,0 +1,16 @@
+leidenalg-0.10.1.dist-info/top_level.txt,sha256=P3ENfjbM36KTOwEtlR1kASK7RB5a9tx2_ClF17aXLk0,10
+leidenalg-0.10.1.dist-info/WHEEL,sha256=9reYvWjcKgJncKy6BhLI0jqw2cLdbvb4B3b6nR2SGtE,148
+leidenalg-0.10.1.dist-info/RECORD,,
+leidenalg-0.10.1.dist-info/METADATA,sha256=1qd4FaI-dIxfskXieRaBEdHG0Y5AmA0thpgvLg_HXg0,10152
+leidenalg-0.10.1.dist-info/LICENSE,sha256=WJ7YI-moTFb-uVrFjnzzhGJrnL9P2iqQe8NuED3hutI,35141
+leidenalg.libs/liblibleidenalg-3f9fe403.so.0.11.0,sha256=hMBhRSRAW1lYSVl7dke7v_GSWgs7oZ7lshEQa_-yNzQ,629297
+leidenalg.libs/libigraph-42015797.so.3.0.0,sha256=xRFBKh2XofmCzXQn-UxMSii3Ws8UcexuFpdlLBNc4Wg,4096089
+leidenalg/functions.py,sha256=T4NlG5elD5tSIsgTrlQ5Zr0B8PXyzNFb7ZqktM0ndPc,20259
+leidenalg/pynterface.cpp,sha256=ATdMHC4ptN1iNHggRbhPkvNrb_WAblG4sQNH6OVGgfY,24
+leidenalg/python_partition_interface.cpp,sha256=JvGiIykeX870utVn8Qr4mjGasjBjU0vL4DS2rz0qrW0,36877
+leidenalg/_c_leiden.abi3.so,sha256=xNDEYvuhlsZ7GVrBJQGkBxWI207GL3aBbuRq-rQ1S9A,632793
+leidenalg/Optimiser.py,sha256=FUMpDsR33Zrt1d8GNEE6FGYkFOUFWMDbfYx6meaDk1Y,30358
+leidenalg/__init__.py,sha256=luSWLhX033WcMi3mmpFnj8FlfHvwPqk5JbenRup3DS4,2376
+leidenalg/version.py,sha256=DZfx0jG8HOLfpYg7xl55YfCuJ1t-gmnPZpuuqhib0Ig,162
+leidenalg/python_optimiser_interface.cpp,sha256=YmVkGE1-MiJSk0of763DcjMG67lklhWKmOeMfZR-cnc,29074
+leidenalg/VertexPartition.py,sha256=tvFaUFer3NvRgT6a8v3F41eREZGxP2Uk9_xQ_mWADyY,42007

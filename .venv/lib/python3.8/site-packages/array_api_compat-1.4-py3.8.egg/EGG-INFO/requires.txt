@@ -1,0 +1,6 @@
+
+[cupy]
+cupy
+
+[numpy]
+numpy

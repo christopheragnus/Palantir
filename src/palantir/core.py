@@ -297,7 +297,7 @@ def _compute_pseudotime(data, start_cell, knn, waypoints, n_jobs, max_iterations
     while not converged and iteration < max_iterations:
         # Perspective matrix by alinging to start distances
         P = deepcopy(D)
-        for wp in waypoints[1:]:
+        for wp in waypoints[1:]:                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
             # Position of waypoints relative to start
             idx_val = pseudotime[wp]
 
@@ -404,17 +404,17 @@ def _construct_markov_chain(wp_data, knn, pseudotime, n_jobs):
 
     # Remove edges that move backwards in pseudotime except for edges that are within
     # the computed standard deviation
-    rem_edges = traj_nbrs.apply(
-        lambda x: x < pseudotime[traj_nbrs.index] - adaptive_std
-    )
-    rem_edges = rem_edges.stack()[rem_edges.stack()]
+    # rem_edges = traj_nbrs.apply(
+    #     lambda x: x < pseudotime[traj_nbrs.index] - adaptive_std
+    # )
+    # rem_edges = rem_edges.stack()[rem_edges.stack()]
 
     # Determine the indices and update adjacency matrix
     cell_mapping = pd.Series(range(len(waypoints)), index=waypoints)
-    x = list(cell_mapping[rem_edges.index.get_level_values(0)])
-    y = list(rem_edges.index.get_level_values(1))
+    # x = list(cell_mapping[rem_edges.index.get_level_values(0)])
+    # y = list(rem_edges.index.get_level_values(1))
     # Update adjacecy matrix
-    kNN[x, ind[x, y]] = 0
+    # kNN[x, ind[x, y]] = 0
 
     # Affinity matrix and markov chain
     x, y, z = find(kNN)
