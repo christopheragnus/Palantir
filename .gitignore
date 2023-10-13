@@ -5,3 +5,4 @@ __pycache__/
 build/
 palantir.egg-info/
 .venv
+.venv/*
