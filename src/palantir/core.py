@@ -125,6 +125,7 @@ def run_palantir(
     # ################################################
     # Determine the boundary cell closest to user defined early cell
     dm_boundaries = pd.Index(set(data_df.idxmax()).union(data_df.idxmin()))
+    print('data', data_df)
     dists = pairwise_distances(
         data_df.loc[dm_boundaries, :], data_df.loc[early_cell, :].values.reshape(1, -1)
     )
@@ -404,17 +405,17 @@ def _construct_markov_chain(wp_data, knn, pseudotime, n_jobs):
 
     # Remove edges that move backwards in pseudotime except for edges that are within
     # the computed standard deviation
-    # rem_edges = traj_nbrs.apply(
-    #     lambda x: x < pseudotime[traj_nbrs.index] - adaptive_std
-    # )
-    # rem_edges = rem_edges.stack()[rem_edges.stack()]
+    rem_edges = traj_nbrs.apply(
+        lambda x: x < pseudotime[traj_nbrs.index] - adaptive_std
+    )
+    rem_edges = rem_edges.stack()[rem_edges.stack()]
 
     # Determine the indices and update adjacency matrix
     cell_mapping = pd.Series(range(len(waypoints)), index=waypoints)
-    # x = list(cell_mapping[rem_edges.index.get_level_values(0)])
-    # y = list(rem_edges.index.get_level_values(1))
+    x = list(cell_mapping[rem_edges.index.get_level_values(0)])
+    y = list(rem_edges.index.get_level_values(1))
     # Update adjacecy matrix
-    # kNN[x, ind[x, y]] = 0
+    kNN[x, ind[x, y]] = 0
 
     # Affinity matrix and markov chain
     x, y, z = find(kNN)

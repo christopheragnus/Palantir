@@ -14,7 +14,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setup(
-    name="palantir",
+    name="palantir-dev",
     version=__version__,  # read in from the exec of version.py; ignore error
     description="Palantir for modeling continuous cell state and cell fate choices in single cell data",
     long_description=long_description,
@@ -29,16 +29,16 @@ setup(
         "pandas==1.5.3",
         "scipy==1.10.1",
         "networkx>=2.1",
-        "scikit-learn>=0.24",
+        "scikit-learn",
         "joblib",
-        "fcsparser>=0.2.7",
+        "fcsparser>=0.1.2",
         "leidenalg>=0.9.1",
         "Cython",
         "cmake",
         "matplotlib==3.7.3",
         "tzlocal",
-        "anndata>=0.8.0",
-        "scanpy>=1.6.0",
+        "anndata==0.10.2",
+        "scanpy==1.9.5",
         "mellon>=1.3.0",
         "pygam",
         "pybind11"

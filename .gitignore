@@ -6,3 +6,4 @@ build/
 palantir.egg-info/
 .venv
 .venv/*
+data
