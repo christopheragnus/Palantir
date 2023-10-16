@@ -272,7 +272,13 @@ def _compute_pseudotime(data, start_cell, knn, waypoints, n_jobs, max_iterations
 
     # Convert to distance matrix
     D = pd.DataFrame(0.0, index=waypoints, columns=data.index)
+    print("WAYPOINTS", len(waypoints))
     for i, cell in enumerate(waypoints):
+        print("iteration", i)
+        print("dist", len(dists))
+        print("data", len(data))
+        print("index", data.index[dists[i].index])
+        # dist is not equal to data
         D.loc[cell, :] = pd.Series(
             np.ravel(dists[i]), index=data.index[dists[i].index]
         )[data.index]
