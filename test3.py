@@ -14,7 +14,7 @@ GEX_adata = ddl.tl.setup_vdj_pseudobulk(preprocessed_GEXdata, mode="B",
                                         productive_vj = False
                                        )
 
-GEX_adata = GEX_adata[~GEX_adata.obs["celltype_annotation"].isin(["CYCLING_B", "B1", "MATURE_B"])] 
+GEX_adata = GEX_adata[~GEX_adata.obs["celltype_annotation"].isin(["CYCLING_B", "B1", "MATURE_B", "PLASMA_B", "LATE_PRO_B", "PRO_B", "PRE_PRO_B"])] 
 
 sc.pp.neighbors(GEX_adata, use_rep="X_scvi", n_neighbors=50)
 milo.make_nhoods(GEX_adata, prop=0.1)
@@ -26,13 +26,20 @@ pb_GEX_adata = ddl.tl.vdj_pseudobulk(
 )
 
 # compute PCA
+sc.pp.neighbors(pb_GEX_adata)
+sc.tl.umap(pb_GEX_adata)
 
 sc.tl.pca(pb_GEX_adata) # compute PCA coordinates, loadings and variance
-# sc.pl.pca(pb_GEX_adata, color="celltype_annotation")
+sc.pl.pca(pb_GEX_adata, color="celltype_annotation")
 # sc.pl.pca_overview(pb_GEX_adata)
 
+
+
 # pick rootcell & terminal state
-rootcell = np.where(pb_GEX_adata.obs["celltype_annotation"]=="LARGE_PRE_B")[0][0]
+rootcell = pb_GEX_adata[pb_GEX_adata.obs["celltype_annotation"]=="LARGE_PRE_B"].obs_names[
+            np.argmin(pb_GEX_adata[pb_GEX_adata.obs["celltype_annotation"]=="LARGE_PRE_B"].obsm["X_umap"][:, 1])
+        ]
+
 print(rootcell)
 
 terminal_states = pd.Series(
@@ -46,7 +53,7 @@ terminal_states = pd.Series(
 
 print(terminal_states)
 
-sc.pp.neighbors(pb_GEX_adata, n_neighbors=100)
+# sc.pp.neighbors(pb_GEX_adata, n_neighbors=100)
 
 # Run diffusion maps
 pca_projections = pd.DataFrame(pb_GEX_adata.obsm["X_pca"], index=pb_GEX_adata.obs_names)
@@ -56,7 +63,7 @@ ms_data.index = ms_data.index.astype(str)
 
 pr_res = palantir.core.run_palantir(
     ms_data,
-    pb_GEX_adata.obs_names[rootcell],
+    rootcell,
     num_waypoints=500,
     terminal_states=terminal_states.index,
 )
