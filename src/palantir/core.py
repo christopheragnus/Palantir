@@ -380,7 +380,7 @@ def identify_terminal_states(
 def _construct_markov_chain(wp_data, knn, pseudotime, n_jobs):
 
     # Markov chain construction
-    print("Markov chain construction...")
+    print("Modified Markov chain construction...")
     waypoints = wp_data.index
 
     # kNN graph
@@ -406,17 +406,17 @@ def _construct_markov_chain(wp_data, knn, pseudotime, n_jobs):
 
     # Remove edges that move backwards in pseudotime except for edges that are within
     # the computed standard deviation
-    rem_edges = traj_nbrs.apply(
-        lambda x: x < pseudotime[traj_nbrs.index] - adaptive_std
-    )
-    rem_edges = rem_edges.stack()[rem_edges.stack()]
+    # rem_edges = traj_nbrs.apply(
+    #     lambda x: x < pseudotime[traj_nbrs.index] - adaptive_std
+    # )
+    # rem_edges = rem_edges.stack()[rem_edges.stack()]
 
     # Determine the indices and update adjacency matrix
-    cell_mapping = pd.Series(range(len(waypoints)), index=waypoints)
-    x = list(cell_mapping[rem_edges.index.get_level_values(0)])
-    y = list(rem_edges.index.get_level_values(1))
+    # cell_mapping = pd.Series(range(len(waypoints)), index=waypoints)
+    # x = list(cell_mapping[rem_edges.index.get_level_values(0)])
+    # y = list(rem_edges.index.get_level_values(1))
     # Update adjacecy matrix
-    kNN[x, ind[x, y]] = 0
+    # kNN[x, ind[x, y]] = 0
 
     # Affinity matrix and markov chain
     x, y, z = find(kNN)
