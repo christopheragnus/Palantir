@@ -76,7 +76,7 @@ print('plotting...')
 
 sc.pl.pca(
     pb_GEX_adata,
-    color=["pseudotime", "prob_IMMATURE_B"],
+    color=["pseudotime", "prob_IMMATURE_B", "celltype_annotation"],
     color_map="coolwarm"
 )
 
