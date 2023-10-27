@@ -88,4 +88,5 @@ sc.pl.umap(
     bdata,
     color=["pseudotime", "prob_IMMATURE_B"],
     color_map="coolwarm",
+    edges=True
 )
